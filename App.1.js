@@ -1,32 +1,25 @@
 import React from 'react';
-import { createBottomTabNavigator } from 'react-navigation';
-import { StyleSheet, Platform, Image, Button, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, Platform, Image, Text, View, ScrollView } from 'react-native';
+
 import firebase from 'react-native-firebase';
 
-class HomeScreen extends React.Component {
-  render() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Home!</Text>
-      </View>
-    );
+export default class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {};
   }
-}
 
-class SettingsScreen extends React.Component {
-  render() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Settings!</Text>
-      </View>
-    );
+  async componentDidMount() {
+    // TODO: You: Do firebase things
+    // const { user } = await firebase.auth().signInAnonymously();
+    // console.warn('User -> ', user.toJSON());
+
+    // await firebase.analytics().logEvent('foo', { bar: '123'});
   }
-}
-class meow extends React.Component {
+
   render() {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-<ScrollView>
+      <ScrollView>
         <View style={styles.container}>
           <Image source={require('./assets/ReactNativeFirebase.png')} style={[styles.logo]}/>
           <Text style={styles.welcome}>
@@ -65,17 +58,10 @@ class meow extends React.Component {
             {firebase.storage.nativeModuleExists && <Text style={styles.module}>storage()</Text>}
           </View>
         </View>
-      </ScrollView>        
-        </View>
+      </ScrollView>
     );
   }
 }
-export default createBottomTabNavigator({
-  Home: { screen: HomeScreen },
-  Settings: { screen: SettingsScreen },
-  meow: { screen: meow },
-});
-
 
 const styles = StyleSheet.create({
   container: {
